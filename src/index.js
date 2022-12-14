@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './assets/styles/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

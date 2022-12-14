@@ -1,24 +1,37 @@
 import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Login from './pages/Login';
+import Statistics from './pages/Statistics/index';
+import MessageTracking from './pages/MessageTracking';
+import { createContext, useState } from 'react';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+export const AppContext = createContext();
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
+      <Router>
+        <Switch>
+          <PrivateRoute exact path="/">
+            <Statistics />
+          </PrivateRoute>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <PrivateRoute path="/message-tracking">
+            <MessageTracking />
+          </PrivateRoute>
+        </Switch>
+      </Router>
+    </AppContext.Provider>
+    
   );
 }
 

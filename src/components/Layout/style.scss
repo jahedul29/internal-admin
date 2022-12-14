@@ -1,0 +1,34 @@
+@import '../../assets/styles/variable.scss';
+
+.layout-container{
+    .left-container{
+        background-color: $primaryColor;
+        transition: all .5s ease-in-out;
+    }
+
+    .right-container{
+        transition: all .5s ease-in-out;
+    }
+
+    .expanded{
+        transition: all .5s ease-in-out;
+        .left-container{
+            width: 15%;
+        }
+
+        .right-container{
+            width: 85%;
+        }
+    }
+
+    .collpsed{
+        
+        .left-container{
+            width: 50px;
+        }
+
+        .right-container{
+            width: calc(100% - 50px);
+        }
+    }
+}
